@@ -14,4 +14,4 @@ Please note:
 
 - In IDE v2024.11.0.179 / Runtime v2024.11.0.226: room assets, script assets and particle system assets do not appear to get stripped by the compiler.
 
-- In IDE v2024.14.0.207  Runtime v2024.14.0.251: room assets and script assets do not   appear to get stripped by the compiler.
+- In IDE v2024.14.0.207 / Runtime v2024.14.0.251: room assets and script assets do not   appear to get stripped by the compiler.
