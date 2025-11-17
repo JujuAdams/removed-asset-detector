@@ -4,6 +4,14 @@ Returns if an asset name doesn't exist in the game specifically because the asse
 
 The asset name should be passed to this function as a string e.g. you should call `asset_get_stripped("obj_example")` for an object named `obj_example`.
 
-This function will only work when running the game from the IDE. When running from an executable, this function will always return `false`. Furthermore, `asset_get_stripped()` needs access to the project .yy JSON file which means this function will not work when running on a device other than your development hardware (e.g. Android, iOS, Nintendo Switch etc.). This function further requires you to untick the "Disable file system sandbox" Game Option for the platform you're running on.
+Please note:
 
-Please note that (as of IDE v2024.11.0.179 / Runtime v2024.11.0.226) room assets, script assets and particle system assets do not appear to get stripped by the compiler and this function will likely always return `false` for those assets.
+- This function needs access to the project .yy JSON file which means this function will not work when running on a device other than your development hardware (e.g. Android, iOS, Nintendo Switch etc.) and will always return `false`.
+
+- This function will only work when running the game from the IDE. When running from an executable, this function will always return `false`. 
+
+- This function requires you to untick the "Disable file system sandbox" Game Option for the platform you're running on.
+
+- In IDE v2024.11.0.179 / Runtime v2024.11.0.226: room assets, script assets and particle system assets do not appear to get stripped by the compiler.
+
+- In IDE v2024.14.0.207  Runtime v2024.14.0.251: room assets and script assets do not   appear to get stripped by the compiler.
