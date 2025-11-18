@@ -11,15 +11,7 @@
 /// 
 /// Please note:
 /// 
-/// - This function needs access to the project .yy JSON file which means this function will not
-///   work when running on a device other than your development hardware (e.g. Android, iOS,
-///   Nintendo Switch etc.) and will always return `false`.
-/// 
-/// - This function will only work when running the game from the IDE. When running from an
-///   executable, this function will always return `false`. 
-/// 
-/// - This function requires you to untick the "Disable file system sandbox" Game Option for the
-///   platform you're running on.
+/// - The HTML5 runtime is not supported and this function will always return `false`.
 /// 
 /// - In IDE v2024.11.0.179 / Runtime v2024.11.0.226: room assets, script assets and particle
 ///   system assets do not appear to get stripped by the compiler.
@@ -33,61 +25,46 @@ function asset_get_stripped(_assetName)
 {
     static _projectResourceDict = (function()
     {
-        if (GM_build_type != "run")
+        var _dictionary = undefined;
+        
+        if ((os_type != os_operagx) && (os_browser != browser_not_a_browser))
         {
-            //Skip all this work if we're not running from the IDE
-            return undefined;
+            //HTML5 isn't supported
+            show_debug_message("Warning! `asset_get_stripped()` is not supported when using the HTML5 runtime");
         }
-        //
-        //if ((os_type != os_windows) && (os_type != os_macosx) && (os_type != os_linux))
-        //{
-            ////Skip all this work if we're running on a non-development platform
-            //return undefined;
-        //}
-        
-        //if (GM_is_sandboxed)
-        //{
-            //show_error(" \nPlease tick `\"Disable file system sandbox\" for this platform in your Game Options\n ", true);
-        //}
-        
-        try
+        else
         {
-            var _buffer = buffer_load("project.yyp");
-            var _jsonString = buffer_read(_buffer, buffer_text);
-            buffer_delete(_buffer);
-            
-            var _dictionary = {};
-            
-            var _resourcesArray = json_parse(_jsonString)[$ "resources"];
-            var _i = 0;
-            repeat(array_length(_resourcesArray))
+            try
             {
-                _dictionary[$ _resourcesArray[_i].id.name] = true;
-                ++_i;
+                var _buffer = buffer_load("asset_get_stripped.json");
+                var _jsonString = buffer_read(_buffer, buffer_text);
+                buffer_delete(_buffer);
+                
+                _dictionary = {};
+                
+                var _resourcesArray = json_parse(_jsonString)[$ "resources"];
+                var _i = 0;
+                repeat(array_length(_resourcesArray))
+                {
+                    _dictionary[$ _resourcesArray[_i].id.name] = true;
+                    ++_i;
+                }
             }
-        }
-        catch(_error)
-        {
-            show_debug_message(json_stringify(_error, true));
-            show_error(" \nProject JSON failed to load\n ", true);
+            catch(_error)
+            {
+                show_debug_message(json_stringify(_error, true));
+                
+                if (GM_build_type == "run")
+                {
+                    show_error(" \nProject JSON failed to load\n ", true);
+                }
+            }
         }
         
         return _dictionary;
     })();
     
-    if (GM_build_type != "run")
-    {
-        //We can't detect anything helpful if we're not running from the IDE
-        return false;
-    }
-    
-    //if ((os_type != os_windows) && (os_type != os_macosx) && (os_type != os_linux))
-    //{
-        //We also can't detect anything helpful if we're running on a non-development platform
-        //return false;
-    //}
-    
-    if (asset_get_type(_assetName) != asset_unknown)
+    if ((not is_struct(_projectResourceDict)) || (asset_get_type(_assetName) != asset_unknown))
     {
         //Asset exists in the project; definitionally not stripped
         return false;
