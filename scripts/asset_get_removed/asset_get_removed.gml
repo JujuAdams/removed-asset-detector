@@ -87,4 +87,4 @@ function asset_get_removed(_assetName)
     }
 }
 
-show_debug_message("Thank you for using Removed Asset Detector by Juju Adams and Sidorakh! This version 2.0.0, 2025-11-18.");
+show_debug_message("Welcome to Removed Asset Detector by Juju Adams and Sidorakh! This version 2.0.1, 2025-11-18.");
