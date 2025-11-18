@@ -12,7 +12,7 @@ Please note:
 
 - By default, this function will never raise an error if you have compiled your game and are running it outside the IDE. In this situation, this function will not check to see if an asset has been removed and will return `-1` for an asset it cannot find. If you would like to enable errors, please tick the `Force Export` option in `removed_asset_detector`.
 
-- The HTML5 runtime is not supported and this function will never raise an error on when using the HTML5 runtime.
+- The HTML5 runtime is not supported and this function will never raise an error when using the HTML5 runtime.
 
 - In IDE v2024.11.0.179 / Runtime v2024.11.0.226: room assets, script assets and particle system assets do not appear to get removed by the compiler.
 
