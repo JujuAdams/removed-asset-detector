@@ -25,6 +25,11 @@
 /// - In IDE v2024.14.0.207  Runtime v2024.14.0.251: room assets and script assets do not
 ///   appear to get stripped by the compiler.
 /// 
+/// - You will need to keep `asset_get_stripped.json` in your project's datafiles folder. This is
+///   the most reliable way of including external data with your game. If you're using Git (or
+///   other source control software) then please do not .gitignore this file. Any merge conflicts
+///   for this file can be ignored.
+/// 
 /// @param {String} assetName
 
 function asset_get_index_assert(_assetName)
