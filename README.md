@@ -1,4 +1,4 @@
-# asset_get_stripped
+# Removed Asset Detector
 
 Returns if an asset name doesn't exist in the game specifically because the asset has been stripped during compile due to the "Automatically remove unused assets when compiling" feature. This function will return `true` only if the asset exists in the project file but not at runtime. This means `asset_get_stripped()` will return `false` if the asset name is simply misspelled.
 

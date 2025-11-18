@@ -8,8 +8,8 @@
   "name":"oDemo",
   "overriddenProperties":[],
   "parent":{
-    "name":"asset_get_stripped",
-    "path":"asset_get_stripped.yyp",
+    "name":"removed asset detector",
+    "path":"removed asset detector.yyp",
   },
   "parentObjectId":null,
   "persistent":false,

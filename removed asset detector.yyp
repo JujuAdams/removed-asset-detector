@@ -1,6 +1,6 @@
 {
   "$GMProject":"v1",
-  "%Name":"asset_get_stripped",
+  "%Name":"removed asset detector",
   "AudioGroups":[
     {"$GMAudioGroup":"v1","%Name":"audiogroup_default","exportDir":"","name":"audiogroup_default","resourceType":"GMAudioGroup","resourceVersion":"2.0","targets":-1,},
   ],
@@ -23,7 +23,7 @@
   "MetaData":{
     "IDEVersion":"2024.14.0.207",
   },
-  "name":"asset_get_stripped",
+  "name":"removed asset detector",
   "resources":[
     {"id":{"name":"removed_asset_detector","path":"extensions/removed_asset_detector/removed_asset_detector.yy",},},
     {"id":{"name":"fTest","path":"fonts/fTest/fTest.yy",},},
